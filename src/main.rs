@@ -1,8 +1,6 @@
 use std::env;
 
 fn main() {
-    println!("Hello from hz");
-
     let args: Vec<String> = env::args().collect();
 
     if args.len() < 3 {
@@ -13,7 +11,10 @@ fn main() {
     let method = &args[1];
     let url = &args[2];
 
-    let client = reqwest::blocking::Client::new();
+    let client = reqwest::blocking::Client::builder()
+        .user_agent("hh/0.1.0")
+        .build()
+        .unwrap();
     let response = client.request(method.parse().unwrap(), url).send().unwrap();
 
     println!("{:?} {}", response.version(), response.status());

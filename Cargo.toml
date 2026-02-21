@@ -3,6 +3,10 @@ name = "hyz-http-client"
 version = "0.1.0"
 edition = "2024"
 
+[[bin]]
+name = "hh"
+path = "src/main.rs"
+
 [dependencies]
 reqwest = { version = "0.12", features = ["blocking"] }
 
